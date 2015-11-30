@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <title>Color guessing game</title>
+</head>
+<body onload="do_game()">
+    <script>
+    var finished = false;   
+    var guesses = 0;
+    var colors = ["violet","indigo","blue","green","yellow","orange","red"];
+    function do_game(){
+        var target_index = Math.random();
+        var target = colors[Math.floor(target_index * colors.length)];
+        alert("The taget color is: " + target);
+            
+        while (!finished) {
+            guess_input_color = prompt("guess a color from the list " +
+                                  colors);
+            guesses += 1;
+            check_guess();
+        }
+        function check_guess(){
+            if (colors.indexOf(guess_input_color) == -1)
+                alert("I do not recognize that color");
+            else if (guess_input_color > target)
+                alert("Your input is alphabetically higher than mine");
+            else if (guess_input_color < target)
+                alert("Your input is alphabetically lower than mine");
+            else if (guess_input_color == target){
+                myBody=document.getElementsByTagName("body")[0];
+                myBody.style.background=target;
+                alert("Your guessed correcty in " + guesses + " guesses!");
+                return finished=true;    
+            }
+        } 
+    }
+    </script>
+</body>
+</html>
+
+

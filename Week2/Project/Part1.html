@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <title>Color guessing game</title>
+</head>
+<body onload="do_game()">
+    <script>
+    var finished = false;   
+    var guesses = 0;
+    var colors = ["violet","indigo","blue","green","yellow","orange","red"];
+    function do_game(){
+        var target_index = Math.random();
+        var target = colors[Math.floor(target_index * colors.length)];
+        alert("The taget color is: " + target);
+            
+        while (!finished) {
+            guess_input_color = prompt("guess a color from the list " +
+                                  colors);
+            if (guess_input_color == target)
+                finished=true;
+        }   
+    }
+    </script>
+</body>
+</html>
